@@ -35,7 +35,12 @@ jobs:
         run: ./gradlew lint --continue || true
 
       - name: 7. Run unit tests
-        run: ./gradlew testReleaseUnitTest --stacktrace
+        run: |
+          ./gradlew testReleaseUnitTest --stacktrace || {
+            echo "=== FAILED UNIT TESTS SUMMARY ==="
+            find app/build/test-results/ -name "*.xml" -exec cat {} + || true
+            exit 1
+          }
 
       - name: 8. Build release & debug APKs
         run: ./gradlew assembleRelease assembleDebug --stacktrace

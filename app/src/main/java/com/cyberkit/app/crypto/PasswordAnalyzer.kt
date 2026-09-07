@@ -131,8 +131,8 @@ object PasswordAnalyzer {
             seconds < 60 -> "${seconds.toInt()} seconds"
             seconds < 3600 -> "${(seconds / 60).toInt()} minutes"
             seconds < 86400 -> "${(seconds / 3600).toInt()} hours"
-            seconds < 86400 * 365 -> "${(seconds / 86400).toInt()} days"
-            seconds < 86400 * 365 * 1000 -> "${(seconds / (86400 * 365)).toInt()} years"
+            seconds < 86400.0 * 365.0 -> "${(seconds / 86400).toInt()} days"
+            seconds < 86400.0 * 365.0 * 1000.0 -> "${(seconds / (86400.0 * 365.0)).toLong()} years"
             else -> "Centuries / Computationally Infeasible"
         }
     }

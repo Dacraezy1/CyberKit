@@ -59,6 +59,7 @@ class WebSecurityScanner {
                         )
                     )
                 }
+                Unit
             }
         } catch (_: Exception) {}
 
@@ -98,6 +99,7 @@ class WebSecurityScanner {
                         )
                     )
                 }
+                Unit
             }
         } catch (_: Exception) {}
 

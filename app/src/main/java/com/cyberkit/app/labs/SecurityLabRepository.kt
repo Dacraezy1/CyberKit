@@ -74,7 +74,7 @@ object SecurityLabRepository {
                 "Prevent Clickjacking via framing controls"
             ),
             conceptSummary = "HTTP Strict Transport Security (HSTS) informs user agents that all future requests to the domain must strictly use HTTPS, refusing cleartext HTTP connections even if the user types 'http://'. Content Security Policy (CSP) restricts what domains scripts, styles, and media can load from.",
-            challengePrompt = "Which HTTP response header explicitly instructs modern browsers to prevent the webpage from being rendered inside an <iframe\> to stop Clickjacking?",
+            challengePrompt = "Which HTTP response header explicitly instructs modern browsers to prevent the webpage from being rendered inside an <iframe> to stop Clickjacking?",
             options = listOf(
                 "Strict-Transport-Security: max-age=31536000",
                 "X-Frame-Options: DENY (or CSP frame-ancestors 'none')",
@@ -117,7 +117,7 @@ object SecurityLabRepository {
                 "Understand the implications of android:exported='true'",
                 "Analyze implicit vs explicit intent handling"
             ),
-            conceptSummary = "In Android, Activities, Services, and BroadcastReceivers with an <intent-filter\> default to exported='true' on older Android versions unless explicitly set to false. Exported components can be triggered by ANY application on the device, potentially allowing unauthorized task execution or data leakage if not guarded by custom permissions.",
+            conceptSummary = "In Android, Activities, Services, and BroadcastReceivers with an <intent-filter> default to exported='true' on older Android versions unless explicitly set to false. Exported components can be triggered by ANY application on the device, potentially allowing unauthorized task execution or data leakage if not guarded by custom permissions.",
             challengePrompt = "A developer creates a database sync Service with android:exported='true' and no android:permission attribute. What is the security risk?",
             options = listOf(
                 "The app cannot be compiled on Android 14",

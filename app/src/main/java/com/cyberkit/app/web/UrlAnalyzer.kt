@@ -104,7 +104,9 @@ class UrlAnalyzer {
                     .header("User-Agent", "Mozilla/5.0 (Android; CyberKit Security Assessment/1.0)")
                     .build()
 
-                httpClient.newCall(req).execute().use { response ->
+                val response = httpClient.newCall(req).execute()
+                var shouldStop = false
+                try {
                     finalStatus = response.code
                     redirectList.add(RedirectHop(currentUrl, response.code))
 
@@ -124,11 +126,16 @@ class UrlAnalyzer {
                         val next = response.header("Location")
                         if (!next.isNullOrBlank()) {
                             currentUrl = URI(currentUrl).resolve(next).toString()
-                        } else break
+                        } else {
+                            shouldStop = true
+                        }
                     } else {
-                        break
+                        shouldStop = true
                     }
+                } finally {
+                    response.close()
                 }
+                if (shouldStop) break
             } catch (e: Exception) {
                 if (finalStatus == -1) finalStatus = 0
                 break
